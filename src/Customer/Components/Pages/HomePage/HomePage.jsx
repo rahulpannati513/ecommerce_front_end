@@ -7,13 +7,14 @@ export function HomePage() {
     return (
 
         <>
-            <div className="space-y-10 py-20 flex flex-col justify-center px-5 lg:px-10  "><MainCarousel/></div>
+            <div className="space-y-100  flex flex-col justify-center px-5 lg:px-10  "><MainCarousel/></div>
             <div><HomeSectionCarousel data={mens_kurta} sectionName={"Men's Kurtha"}/></div>
             <div><HomeSectionCarousel data={mens_kurta} sectionName={"Men's Shoes"}/></div>
             <div><HomeSectionCarousel data={mens_kurta} sectionName={"Men's Shirt"}/></div>
             <div><HomeSectionCarousel data={mens_kurta} sectionName={"Women's Saree"}/></div>
             <div><HomeSectionCarousel data={mens_kurta} sectionName={"Women's Dress"}/></div>
-            <div><Footer/></div>
+            <div><Footer/>
+            </div>
 
         </>
     )

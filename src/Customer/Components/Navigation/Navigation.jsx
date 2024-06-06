@@ -148,7 +148,7 @@ const navigation = {
         },
     ],
     pages: [
-        { name: 'Company', href: '#' },
+        { name: 'Rahul Pannati Company', href: '#' },
         { name: 'Stores', href: '#' },
     ],
 }
@@ -303,7 +303,7 @@ export default function Example() {
 
             <header className="relative bg-white">
                 <p className="flex h-10 items-center justify-center bg-indigo-600 px-4 text-sm font-medium text-white sm:px-6 lg:px-8">
-                    Get free delivery on orders over $100
+                    Get free delivery on orders over ₹999 
                 </p>
 
                 <nav aria-label="Top" className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -322,7 +322,7 @@ export default function Example() {
                             {/* Logo */}
                             <div className="ml-4 flex lg:ml-0">
                                 <a href="#">
-                                    <span className="sr-only">Your Company</span>
+                                    <span className="sr-only">Rahul Pannati Company</span>
                                     <img
                                         className="h-8 w-auto"
                                         src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
@@ -444,11 +444,11 @@ export default function Example() {
                                 <div className="hidden lg:ml-8 lg:flex">
                                     <a href="#" className="flex items-center text-gray-700 hover:text-gray-800">
                                         <img
-                                            src="https://tailwindui.com/img/flags/flag-canada.svg"
+                                            src="https://as2.ftcdn.net/v2/jpg/07/45/83/83/1000_F_745838343_Lv8re678kEMjPSvxMgtwegKBvZzprKEe.webp"
                                             alt=""
                                             className="block h-auto w-5 flex-shrink-0"
                                         />
-                                        <span className="ml-3 block text-sm font-medium">CAD</span>
+                                        <span className="ml-3 block text-sm font-medium">INDIA</span>
                                         <span className="sr-only">, change currency</span>
                                     </a>
                                 </div>
