@@ -4,7 +4,9 @@ import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 import {Button} from "@mui/material";
 import {useState} from "react";
 import {mens_kurta} from "../../../ecommerce-products-data-master/Men/men_kurta.js";
+import { useRef } from "react";
 export function HomeSectionCarousel({data,sectionName}) {
+    const carouselRef = useRef(null);
 
 
      const[activeIndex,setActiveIndex] = useState(0) ;
@@ -16,12 +18,27 @@ export function HomeSectionCarousel({data,sectionName}) {
         1024: { items: 5.5 },
     };
 
-     const sidePrev =() => setActiveIndex(activeIndex - 1);
-    const sideNext =() => setActiveIndex(activeIndex+1);
+ 
+    const sidePrev = () => {
+        let newIndex = activeIndex - 1;
+        if (newIndex < 0) {
+            newIndex = items.length - 1; // Assuming 'items' is the array of carousel items
+        }
+        setActiveIndex(newIndex);
+        if (carouselRef.current) {
+            carouselRef.current.slideTo(newIndex); // Assuming the carousel library supports the slideTo method
+        }
+    };
+  
+
+    const sideNext = () => {
+        setActiveIndex(activeIndex + 1);
+        carouselRef.current.slideNext();
+    };
 
      const syncActiveIndex = (items) => {setActiveIndex(items);}
 
-    const items = data.slice(0,10).map((items ) => <HomeSectionCard product={items}/>);
+    const items = data.slice(0,40).map((items ) => <HomeSectionCard product={items}/>);
 
     return (
         <>
@@ -34,19 +51,21 @@ export function HomeSectionCarousel({data,sectionName}) {
 
                 <AliceCarousel
 
-                    items={items}
-                    disableButtonsControls
+ref={carouselRef}
+items={items}
+disableButtonsControls
+disableDotsControls
+responsive={responsive}
+onSlideChanged={syncActiveIndex}
+activeIndex={activeIndex}
+animationDuration={1000}
 
-                    disableDotsControls
-                    responsive={responsive}
-                    onSlideChanged={syncActiveIndex}
-                    activeIndex={activeIndex}
 
                 />
 
-                { activeIndex !== items.length-5 &&  <Button variant="contained" className="z-50 bg-white" onClick={sideNext}  sx={{position:`absolute`,top:`8rem`,right:"0rem",backgroundColor: 'white',transform:"translateX(50%) rotate(90deg)"}} aria-label="next"><KeyboardArrowLeftIcon sx={{transform:"rotate(90deg)",color:"black"}}/> </Button>}
+                { activeIndex !== items.length-5 &&  <Button variant="contained" className="z-50 bg-white" onClick={sideNext}  sx={{position:`absolute`,top:`8rem`,right:"2.5rem",backgroundColor: 'white',transform:"translateX(50%) rotate(90deg)"}} aria-label="next"><KeyboardArrowLeftIcon sx={{transform:"rotate(90deg)",color:"black"}}/> </Button>}
 
-                { activeIndex !== 0  &&  <Button  variant="contained" className="z-50 bg-white  " onClick={sidePrev} sx={{position:`absolute`,top:`8rem`,left:"0rem",backgroundColor: 'white',transform:"translateX(-50%) rotate(90deg)",bgcolor:"white"}}><KeyboardArrowLeftIcon sx={{transform:"rotate(-90deg)",color:"black"}}/></Button>}
+                { activeIndex !== 0  &&  <Button  variant="contained" className="z-50 bg-white  " onClick={sidePrev} sx={{position:`absolute`,top:`8rem`,left:"4rem",backgroundColor: 'white',transform:"translateX(-50%) rotate(90deg)",bgcolor:"white"}}><KeyboardArrowLeftIcon sx={{transform:"rotate(-90deg)",color:"black"}}/></Button>}
 
             </div>
         </div>
