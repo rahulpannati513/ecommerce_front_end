@@ -30,42 +30,45 @@ export function HomeSectionCarousel({data,sectionName}) {
         }
     };
   
-
     const sideNext = () => {
         setActiveIndex(activeIndex + 1);
         carouselRef.current.slideNext();
     };
 
-     const syncActiveIndex = (items) => {setActiveIndex(items);}
+     const syncActiveIndex = (item) => {setActiveIndex(item);}
 
     const items = data.slice(0,40).map((items ) => <HomeSectionCard product={items}/>);
 
     return (
         <>
         <div className="border">
-<h1 className="text-2xl font-bold text>gray-900">{sectionName}</h1>
+        <h1 className="text-2xl font-bold text>gray-900">{sectionName}</h1>
         <div className = "relative p-5 ">
 
             <div>
 
-
                 <AliceCarousel
 
-ref={carouselRef}
-items={items}
-disableButtonsControls
-disableDotsControls
-responsive={responsive}
-onSlideChanged={syncActiveIndex}
-activeIndex={activeIndex}
-animationDuration={1000}
-
+                     ref={carouselRef}
+                     items={items} 
+                     disableButtonsControls
+                     disableDotsControls
+                     responsive={responsive}
+                     onSlideChanged={syncActiveIndex}
+                     activeIndex={activeIndex}
+                     animationDuration={1000}
 
                 />
 
-                { activeIndex !== items.length-5 &&  <Button variant="contained" className="z-50 bg-white" onClick={sideNext}  sx={{position:`absolute`,top:`8rem`,right:"2.5rem",backgroundColor: 'white',transform:"translateX(50%) rotate(90deg)"}} aria-label="next"><KeyboardArrowLeftIcon sx={{transform:"rotate(90deg)",color:"black"}}/> </Button>}
+                { activeIndex !== items.length-5 &&  <Button variant="contained" className="z-50 bg-white" 
+                onClick={sideNext}  sx={{position:`absolute`,top:`8rem`,right:"2.5rem",
+                backgroundColor: 'white',transform:"translateX(50%) rotate(90deg)"}} 
+                aria-label="next"><KeyboardArrowLeftIcon sx={{transform:"rotate(90deg)",color:"black"}}/> </Button>}
 
-                { activeIndex !== 0  &&  <Button  variant="contained" className="z-50 bg-white  " onClick={sidePrev} sx={{position:`absolute`,top:`8rem`,left:"4rem",backgroundColor: 'white',transform:"translateX(-50%) rotate(90deg)",bgcolor:"white"}}><KeyboardArrowLeftIcon sx={{transform:"rotate(-90deg)",color:"black"}}/></Button>}
+                { activeIndex !== 0  &&  <Button  variant="contained" className="z-50 bg-white  " onClick={sidePrev}
+                 sx={{position:`absolute`,top:`8rem`,left:"4rem",backgroundColor: 'white',
+                 transform:"translateX(-50%) rotate(90deg)",bgcolor:"white"}}><KeyboardArrowLeftIcon
+                  sx={{transform:"rotate(-90deg)",color:"black"}}/></Button>}
 
             </div>
         </div>
